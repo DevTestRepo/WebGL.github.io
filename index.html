@@ -9,7 +9,10 @@
       console.log(token);
       if (token == "0") {
         document.title = "ModelViewer - POD";
+        const colorsdf="#ff0000"
         modelViewer.src = './Chairs/Chair1.glb'
+        const [material] = modelViewer.model.materials;
+        material.pbrMetallicRoughness.setBaseColorFactor(colorsdf);
         modelViewer.iosSrc = './IOS/pod.usdz'
         modelViewer.poster = './PodPoster.webp'
       }
@@ -25,8 +28,18 @@
         window.close();
       };
     }
-  
+      const modelViewerColor = document.querySelector("model-viewer#color");
+      
+      document.querySelector('#color-controls').addEventListener('click', (event) => {
+       // const colorString = event.target.dataset.color;
+       // const [material] = modelViewerColor.modelViewer.material;
+      //  material.pbrMetallicRoughness.setBaseColorFactor(colorString);
+
+
+      });
+      
   </script>
+
   <head>
     <title>&lt;model-viewer&gt; template</title>
     <meta charset="utf-8">
@@ -55,15 +68,7 @@
         <button data-color="#0000ff">Blue</button>
       </div>
     </model-viewer> 
-    <script>
-      const modelViewerColor = document.querySelector("model-viewer#color");
-      
-      document.querySelector('#color-controls').addEventListener('click', (event) => {
-        const colorString = event.target.dataset.color;
-        const [material] = modelViewerColor.modelViewer.material;
-        material.pbrMetallicRoughness.setBaseColorFactor(colorString);
-      });
-      </script> 
+     
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
