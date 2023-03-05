@@ -60,7 +60,7 @@
       
       document.querySelector('#color-controls').addEventListener('click', (event) => {
         const colorString = event.target.dataset.color;
-        const [material] = modelViewerColor.model.materials;
+        const [material] = modelViewerColor.modelViewer.material;
         material.pbrMetallicRoughness.setBaseColorFactor(colorString);
       });
       </script> 
