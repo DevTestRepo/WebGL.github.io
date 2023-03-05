@@ -1,4 +1,5 @@
 <!doctype html>
+<!--
 <html lang="en">
   <script type="text/javascript">
     function SelectShoeIndex() {
@@ -35,12 +36,12 @@
     <meta name="description" content="&lt;model-viewer&gt; template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
-    <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body onload="SelectShoeIndex()">
       <button type="button" id="TryOnBtn"></button>
-      <!-- <model-viewer> HTML element -->
+ 
         <model-viewer id="color" src="./Chairs/Chair2.glb"   ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1">   
       <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
@@ -59,7 +60,7 @@
     </model-viewer> 
      
     <script src="script.js"></script>
-    <!-- Loads <model-viewer> for browsers: -->
+
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
 
     <script>
@@ -72,4 +73,23 @@
       });
       </script>
   </body>
+-->
+<model-viewer id="color" camera-controls touch-action="pan-y" interaction-prompt="none" src="./Chairs/Chair2.glb" ar alt="A 3D model of an astronaut">
+  <div class="controls" ,="" id="color-controls">
+    <button data-color="#ff0000">Red</button>
+    <button data-color="#00ff00">Green</button>
+    <button data-color="#0000ff">Blue</button>
+  </div>
+</model-viewer>
+<script>
+const modelViewerColor = document.querySelector("model-viewer#color");
+
+document.querySelector('#color-controls').addEventListener('click', (event) => {
+  const colorString = event.target.dataset.color;
+  const [material] = modelViewerColor.model.materials;
+  material.pbrMetallicRoughness.setBaseColorFactor(colorString);
+});
+</script>
+
+
 </html>
