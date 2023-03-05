@@ -74,7 +74,7 @@
       </script>
   </body>
 -->
-<model-viewer id="color" camera-controls touch-action="pan-y" interaction-prompt="none" src="./Chairs/Astronaut.glb" ar alt="A 3D model of an astronaut">
+<model-viewer id="color" src="./Chairs/Astronaut.glb"  camera-controls touch-action="pan-y" interaction-prompt="none"  ar alt="A 3D model of an astronaut">
   <div class="controls" ,="" id="color-controls">
     <button data-color="#ff0000">Red</button>
     <button data-color="#00ff00">Green</button>
@@ -86,7 +86,7 @@ const modelViewerColor = document.querySelector("model-viewer#color");
 
 document.querySelector('#color-controls').addEventListener('click', (event) => {
   const colorString = event.target.dataset.color;
-  const [material] = modelViewerColor.model.materials[0];
+  const [material] = modelViewerColor.model.material[0];
   material.pbrMetallicRoughness.setBaseColorFactor(colorString);
 });
 </script>
