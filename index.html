@@ -1,35 +1,6 @@
 <!doctype html>
-<!--
+
 <html lang="en">
-  <script type="text/javascript">
-    function SelectShoeIndex() {
-      const modelViewer = document.querySelector("model-viewer");
-      let queryString = window.location.search;
-      let urlParams = new URLSearchParams(queryString);
-      let token = urlParams.get('id')
-      console.log(token);
-      if (token == "0") {
-       // document.title = "ModelViewer - POD";
-        modelViewer.src = './Chairs/Chair1.glb'
-        modelViewer.iosSrc = './IOS/pod.usdz'
-        modelViewer.poster = './PodPoster.webp'
-      }
-      else if (token == "1") {
-       // document.title = "ModelViewer - Wave"
-        modelViewer.src = './Chairs/Chair2.glb'
-        modelViewer.iosSrc = './IOS/wave.usdz'
-        modelViewer.poster = './WavePoster.webp'
-      }
-      document.getElementById('TryOnBtn').onclick = function (e) {
-        // window.open("/VivoTryOn/index.html", "_self");
-        //history.back();
-        window.close();
-      };
-    }  
-  </script>
-
-
-
   <head>
     <title>&lt;model-viewer&gt; template</title>
     <meta charset="utf-8">
@@ -39,11 +10,9 @@
     
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
-  <body onload="SelectShoeIndex()">
-      <button type="button" id="TryOnBtn"></button>
- 
+  <body> 
         <model-viewer id="color" src="./Chairs/Chair2.glb"   ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1">   
-      <div class="progress-bar hide" slot="progress-bar">
+      <div class="progress-bar hide" slot="progress-bar" materials="sdfsdfsdf" >
           <div class="update-bar"></div>
       </div>
       <button slot="ar-button" id="ar-button">
@@ -68,28 +37,14 @@
       
       document.querySelector('#color-controls').addEventListener('click', (event) => {
         const colorString = event.target.dataset.color;
-        const [material] = modelViewerColor.modelViewer.materials;
+        console.log(modelViewerColor);
+        const material = modelViewerColor.model.materials[0];
         material.pbrMetallicRoughness.setBaseColorFactor(colorString);
       });
       </script>
   </body>
--->
-<model-viewer id="color" src="./Chairs/Astronaut.glb"  camera-controls touch-action="pan-y" interaction-prompt="none"  ar alt="A 3D model of an astronaut">
-  <div class="controls" ,="" id="color-controls">
-    <button data-color="#ff0000">Red</button>
-    <button data-color="#00ff00">Green</button>
-    <button data-color="#0000ff">Blue</button>
-  </div>
-</model-viewer>
-<script>
-const modelViewerColor = document.querySelector("model-viewer#color");
 
-document.querySelector('#color-controls').addEventListener('click', (event) => {
-  const colorString = event.target.dataset.color;
-  const [material] = modelViewerColor.model.material[0];
-  material.pbrMetallicRoughness.setBaseColorFactor(colorString);
-});
-</script>
+
 
 
 </html>
