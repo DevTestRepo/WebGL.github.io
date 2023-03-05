@@ -8,7 +8,7 @@
       let token = urlParams.get('id')
       console.log(token);
       if (token == "0") {
-        document.title = "ModelViewer - POD";
+       // document.title = "ModelViewer - POD";
         const colorsdf="#ff0000"
         modelViewer.src = './Chairs/Chair1.glb'
         const [material] = modelViewer.model.material;
@@ -17,7 +17,7 @@
         modelViewer.poster = './PodPoster.webp'
       }
       else if (token == "1") {
-        document.title = "ModelViewer - Wave"
+       // document.title = "ModelViewer - Wave"
         modelViewer.src = './Chairs/Chair2.glb'
         modelViewer.iosSrc = './IOS/wave.usdz'
         modelViewer.poster = './WavePoster.webp'
@@ -27,18 +27,10 @@
         //history.back();
         window.close();
       };
-    }
-      const modelViewerColor = document.querySelector("model-viewer#color");
-      
-      document.querySelector('#color-controls').addEventListener('click', (event) => {
-       // const colorString = event.target.dataset.color;
-       // const [material] = modelViewerColor.modelViewer.material;
-      //  material.pbrMetallicRoughness.setBaseColorFactor(colorString);
-
-
-      });
-      
+    }  
   </script>
+
+
 
   <head>
     <title>&lt;model-viewer&gt; template</title>
@@ -72,5 +64,15 @@
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+
+    <script>
+      const modelViewerColor = document.querySelector("model-viewer#color");
+      
+      document.querySelector('#color-controls').addEventListener('click', (event) => {
+        const colorString = event.target.dataset.color;
+        const [material] = modelViewerColor.model.materials;
+        material.pbrMetallicRoughness.setBaseColorFactor(colorString);
+      });
+      </script>
   </body>
 </html>
