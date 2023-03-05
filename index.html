@@ -9,10 +9,7 @@
       console.log(token);
       if (token == "0") {
        // document.title = "ModelViewer - POD";
-        const colorsdf="#ff0000"
         modelViewer.src = './Chairs/Chair1.glb'
-        const [material] = modelViewer.model.material;
-        material.pbrMetallicRoughness.setBaseColorFactor(colorsdf);
         modelViewer.iosSrc = './IOS/pod.usdz'
         modelViewer.poster = './PodPoster.webp'
       }
@@ -44,7 +41,7 @@
   <body onload="SelectShoeIndex()">
       <button type="button" id="TryOnBtn"></button>
       <!-- <model-viewer> HTML element -->
-        <model-viewer src="./Chairs/Chair2.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1">   
+        <model-viewer id="color" src="./Chairs/Chair2.glb"   ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1">   
       <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
       </div>
@@ -70,7 +67,7 @@
       
       document.querySelector('#color-controls').addEventListener('click', (event) => {
         const colorString = event.target.dataset.color;
-        const [material] = modelViewerColor.model.materials;
+        const [material] = modelViewerColor.modelViewer.materials;
         material.pbrMetallicRoughness.setBaseColorFactor(colorString);
       });
       </script>
