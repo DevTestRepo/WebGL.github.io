@@ -11,7 +11,7 @@
         document.title = "ModelViewer - POD";
         const colorsdf="#ff0000"
         modelViewer.src = './Chairs/Chair1.glb'
-        const [material] = modelViewer.model.materials;
+        const [material] = modelViewer.model.material;
         material.pbrMetallicRoughness.setBaseColorFactor(colorsdf);
         modelViewer.iosSrc = './IOS/pod.usdz'
         modelViewer.poster = './PodPoster.webp'
